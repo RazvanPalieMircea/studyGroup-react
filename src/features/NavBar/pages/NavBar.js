@@ -24,30 +24,34 @@ const Navbar = () => {
           <span className={styles.navbarToggleIcon} />
           <span className={styles.navbarToggleIcon} />
         </button>
+        <Link to='/' className={styles.showDesktop}>
+          Acasă
+        </Link>
+        <Link to='/profile' className={styles.showDesktop}>
+          Profil
+        </Link>
+        <Link to='/groups' className={styles.showDesktop}>
+          Grupurile/mentori
+        </Link>
+        <Link to='/students' className={styles.showDesktop}>
+          Studentii mei
+        </Link>
       </div>
       {showMenu ? (
-        <ul className={(styles.navbarMenu, styles.show)}>
-          <li className={styles.navbarItem}>
-            <Link to='/' className={styles.navbarLink}>
-              Acasă
-            </Link>
-          </li>
-          <li className={styles.navbarItem}>
-            <Link to='/profile' className={styles.navbarLink}>
-              Profil
-            </Link>
-          </li>
-          <li className={styles.navbarItem}>
-            <Link to='/groups' className={styles.navbarLink}>
-              Grupurile/mentori
-            </Link>
-          </li>
-          <li className={styles.navbarItem}>
-            <Link to='/students' className={styles.navbarLink}>
-              Studentii mei
-            </Link>
-          </li>
-        </ul>
+        <div className={(styles.navbarMenu, styles.show)}>
+          <Link to='/' className={styles.navbarLink}>
+            Acasă
+          </Link>
+          <Link to='/profile' className={styles.navbarLink}>
+            Profil
+          </Link>
+          <Link to='/groups' className={styles.navbarLink}>
+            Grupurile/mentori
+          </Link>
+          <Link to='/students' className={styles.navbarLink}>
+            Studentii mei
+          </Link>
+        </div>
       ) : (
         ''
       )}

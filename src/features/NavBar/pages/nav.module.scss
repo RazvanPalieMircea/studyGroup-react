@@ -4,6 +4,9 @@
   align-items: center;
   padding: 10px 20px;
   background-color: #f55307;
+  width: 100%;
+  height: 80px;
+  position: relative;
 }
 
 .navbarLeft {
@@ -21,6 +24,7 @@
 .navbarRight {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .navbarToggle {
@@ -28,6 +32,25 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.showDesktop {
+  display: none;;
+}
+
+@media (min-width: 768px) {
+  .showDesktop {
+    display: flex;
+    font-family: 'Amiko';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 51px;
+    justify-content: space-between;
+    color: white;
+    margin: 0 10px;
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 768px) {
@@ -58,15 +81,17 @@
     padding: 10px;
   }
 
-  .show .navbarMenu {
+  .show {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: absolute;
-    top: 100%;
+    top: 80px;
     left: 0;
-    right: 0;
     z-index: 1;
+    background-color: white;
+    width: 100%;
+    padding: 20px;
   }
 
   .navbarItem {
@@ -74,6 +99,13 @@
   }
 
   .navbarLink {
-    color: white;
+    font-family: 'Amiko';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 51px;
+    justify-content: space-around;
+    color: black;
+    cursor: pointer;
   }
 }
