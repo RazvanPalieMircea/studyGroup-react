@@ -1,0 +1,79 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f55307;
+}
+
+.navbarLeft {
+  display: flex;
+  align-items: center;
+}
+
+.navbarBrand {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbarRight {
+  display: flex;
+  align-items: center;
+}
+
+.navbarToggle {
+  display: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbarToggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    margin-top: 10px;
+  }
+
+  .navbarToggleIcon {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+  }
+
+  .navbarMenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #f55307;
+    padding: 10px;
+  }
+
+  .show .navbarMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .navbarItem {
+    margin: 10px 0;
+  }
+
+  .navbarLink {
+    color: white;
+  }
+}

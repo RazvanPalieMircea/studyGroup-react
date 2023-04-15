@@ -1,23 +1,63 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 import studyImgae from './../../../../common/assets/icons/study.png'
 
 import styles from './loginPage.module.scss'
 
 const LoginPage = () => {
+  const [username, setUsername] = useState(null)
+  const [password, setPassword] = useState(null)
+
+  const handleLogin = () => {
+    // Send login request with username and password
+    fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        if (data.success) {
+          window.location.href = '/start'
+        }
+      })
+      .catch((error) => {
+        // Handle error
+        console.error(error)
+        window.location.href = '/start'
+      })
+  }
+
   return (
     <div className={styles.parent}>
       <img src={studyImgae} alt='login' className={styles.image} />
       <div className={styles.form_container}>
-        <input type='text' placeholder='Nume user' className={styles.input} />
-        <input type='password' placeholder='Parola' className={styles.input} />
+        <input
+          type='text'
+          placeholder='Nume user'
+          className={styles.input}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type='password'
+          placeholder='Parola'
+          className={styles.input}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <a href='*' className={styles.text}>
           Ai uitat parola?
         </a>
       </div>
-      <Link className={styles.button} to='/start'>
+      <button
+        className={username && password ? styles.button : styles.disable}
+        onClick={handleLogin}>
         Login
-      </Link>
+      </button>
     </div>
   )
 }
