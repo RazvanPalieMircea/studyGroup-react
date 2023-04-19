@@ -56,6 +56,10 @@ const RegisterPage = () => {
     }
   }
 
+  const handleRegister = () => {
+    window.location.href = '/quiz'
+  }
+
   return (
     <div className={styles.parent}>
       <img src={studyImgae} alt='login' className={styles.image} />
@@ -76,7 +80,7 @@ const RegisterPage = () => {
         <a href='#' className={styles.text}>
           Ai uitat parola?
         </a>
-        <button type='submit' className={styles.button}>
+        <button type='submit' onClick={handleRegister} className={styles.button}>
           Înregistrare
         </button>
       </form>
