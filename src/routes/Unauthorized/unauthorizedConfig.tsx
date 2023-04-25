@@ -12,6 +12,7 @@ import {
   List,
   ListMentorsGroups,
   Create,
+  Calendar,
 } from 'features/Home'
 
 enum UNCONFIRMED_ROUTES {
@@ -25,6 +26,7 @@ enum UNCONFIRMED_ROUTES {
   LIST = 'LIST',
   LIST_GROUP_MENTOR = 'LIST_GROUP_MENTOR',
   CREATE = 'CREATE',
+  CALENDAR = 'CALENDAR',
 }
 
 const UNCONFIRMED_PATHS: Record<UNCONFIRMED_ROUTES, string> = {
@@ -39,6 +41,7 @@ const UNCONFIRMED_PATHS: Record<UNCONFIRMED_ROUTES, string> = {
   [UNCONFIRMED_ROUTES.LIST]: '/list-create',
   [UNCONFIRMED_ROUTES.LIST_GROUP_MENTOR]: '/list-mentor-group',
   [UNCONFIRMED_ROUTES.CREATE]: '/create-page',
+  [UNCONFIRMED_ROUTES.CALENDAR]: '/calendar',
 }
 
 export const UNCONFIRMED_ROUTE_CONFIG: RouteProps[] = [
@@ -81,6 +84,10 @@ export const UNCONFIRMED_ROUTE_CONFIG: RouteProps[] = [
   {
     path: UNCONFIRMED_PATHS.CREATE,
     element: <Create />,
+  },
+  {
+    path: UNCONFIRMED_PATHS.CALENDAR,
+    element: <Calendar />,
   },
   {
     path: '*',
