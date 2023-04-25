@@ -1,7 +1,18 @@
 import type { RouteProps } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 
-import { Start, Login, Register, Quiz, Result } from 'features/Home'
+import {
+  Start,
+  Login,
+  Register,
+  Quiz,
+  Result,
+  Home,
+  Profil,
+  List,
+  ListMentorsGroups,
+  Create,
+} from 'features/Home'
 
 enum UNCONFIRMED_ROUTES {
   START = 'START',
@@ -9,6 +20,11 @@ enum UNCONFIRMED_ROUTES {
   REGISTER = 'REGISTER',
   QUIZ = 'QUIZ',
   RESULT = 'RESULT',
+  HOME = 'HOME',
+  PROFIL = 'PROFIL',
+  LIST = 'LIST',
+  LIST_GROUP_MENTOR = 'LIST_GROUP_MENTOR',
+  CREATE = 'CREATE',
 }
 
 const UNCONFIRMED_PATHS: Record<UNCONFIRMED_ROUTES, string> = {
@@ -17,6 +33,12 @@ const UNCONFIRMED_PATHS: Record<UNCONFIRMED_ROUTES, string> = {
   [UNCONFIRMED_ROUTES.REGISTER]: '/register',
   [UNCONFIRMED_ROUTES.QUIZ]: '/quiz',
   [UNCONFIRMED_ROUTES.RESULT]: '/result',
+  [UNCONFIRMED_ROUTES.HOME]: '/home',
+  [UNCONFIRMED_ROUTES.PROFIL]: '/profil',
+  [UNCONFIRMED_ROUTES.LIST]: '/list-create',
+  [UNCONFIRMED_ROUTES.LIST]: '/list-create',
+  [UNCONFIRMED_ROUTES.LIST_GROUP_MENTOR]: '/list-mentor-group',
+  [UNCONFIRMED_ROUTES.CREATE]: '/create-page',
 }
 
 export const UNCONFIRMED_ROUTE_CONFIG: RouteProps[] = [
@@ -24,7 +46,10 @@ export const UNCONFIRMED_ROUTE_CONFIG: RouteProps[] = [
     path: UNCONFIRMED_PATHS.START,
     element: <Start />,
   },
-
+  {
+    path: UNCONFIRMED_PATHS.HOME,
+    element: <Home />,
+  },
   {
     path: UNCONFIRMED_PATHS.LOGIN,
     element: <Login />,
@@ -40,6 +65,22 @@ export const UNCONFIRMED_ROUTE_CONFIG: RouteProps[] = [
   {
     path: UNCONFIRMED_PATHS.RESULT,
     element: <Result />,
+  },
+  {
+    path: UNCONFIRMED_PATHS.PROFIL,
+    element: <Profil />,
+  },
+  {
+    path: UNCONFIRMED_PATHS.LIST,
+    element: <List />,
+  },
+  {
+    path: UNCONFIRMED_PATHS.LIST_GROUP_MENTOR,
+    element: <ListMentorsGroups />,
+  },
+  {
+    path: UNCONFIRMED_PATHS.CREATE,
+    element: <Create />,
   },
   {
     path: '*',

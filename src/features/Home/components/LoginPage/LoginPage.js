@@ -21,13 +21,13 @@ const LoginPage = () => {
       .then((data) => {
         console.log(data)
         if (data.success) {
-          window.location.href = '/start'
+          window.location.href = '/home'
         }
       })
       .catch((error) => {
         // Handle error
         console.error(error)
-        window.location.href = '/start'
+        window.location.href = '/home'
       })
   }
 

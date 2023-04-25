@@ -1,0 +1,42 @@
+.parent {
+    background-color: #ffffff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 10px;
+  }
+  
+  .image {
+    width: 200px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border: 1px solid rgb(10, 175, 197);
+    border-radius: 100%;
+  }
+
+  .container_text {
+    width: 100%;
+    max-width: 800px;
+    margin: 10px;
+    border-radius: 20px;
+    padding: 10px;
+
+    .text {
+      font-family: 'Amiko';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 51px;
+      color: #ffffff;
+      margin-left: 20px;
+    }
+
+    .image {
+      width: 80px;
+      margin: 0;
+    }
+  }
+

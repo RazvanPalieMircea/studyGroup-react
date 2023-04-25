@@ -1,10 +1,11 @@
 .parent {
-    background-color: #33548A;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    padding: 20px;
   }
   
   .image {
@@ -19,6 +20,19 @@
     margin-bottom: 20px;
     width: 100%;
   }
+
+  .image {
+    width: 200px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border: 1px solid rgb(10, 175, 197);
+    border-radius: 100%;
+  }
+
+  .form_container_input {
+    max-width: 400px;
+    width: 100%;
+  }
   
   .input {
     max-width: 400px;
@@ -29,6 +43,7 @@
     padding: 10px;
     margin-bottom: 20px;
     font-size: 18px;
+    border: 1px solid rgb(10, 175, 197);;
   }
   
   .text {
@@ -36,9 +51,28 @@
     font-size: 14px;
     margin-bottom: 20px;
   }
+
+  .text_create {
+    color: #000;
+    font-size: 14px;
+    margin: 20px 0;
+    font-family: 'Amiko';
+    align-content: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 51px;
+  }
   
   .button {
-    border: 8px solid #FFFFFF;
+    border: 2px solid #000000;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    max-width: 400px;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-color: #F55307;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 33px;
     margin: 20px auto;
@@ -57,32 +91,11 @@
     max-width: 400px;
     color: #FFFFFF;
     justify-content: center;
-    background-color:#3281DF;
     cursor: pointer;
   }
   
-  .disable {
-    border: 8px solid #FFFFFF;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 33px;
-    margin: 20px auto;
-    text-align: center;
-    font-family: 'Amiko';
-    align-content: center;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 51px;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-    color: #FFFFFF;
-    justify-content: center;
-    background-color:#3281DF;
-    cursor: pointer;
-    pointer-events: none;
-    opacity: 0.5;
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
   }

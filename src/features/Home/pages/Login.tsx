@@ -1,3 +1,4 @@
+/* eslint-disable css-modules/no-unused-class */
 import { LoginPage } from 'features/Home/components/LoginPage'
 
 import styles from './home.module.scss'

@@ -48,10 +48,14 @@ const QuizPage = () => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.textInfo}>
-        Acesta este un quiz pentru a putea face un profil si a putea fi mai simplu sa iti gasesti un
-        mentor sau un grup!
-      </p>
+      {quizResult.currentQuestionIndex === 0 ? (
+        <p className={styles.textInfo}>
+          Acesta este un quiz pentru a putea face un profil si a putea fi mai simplu sa iti gasesti
+          un mentor sau un grup!
+        </p>
+      ) : (
+        ''
+      )}
       <div className={styles.imageContainer}>
         <div className={styles.arrowContainer}>
           <img

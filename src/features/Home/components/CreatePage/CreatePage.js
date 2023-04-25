@@ -1,39 +1,31 @@
+/* eslint-disable css-modules/no-unused-class */
+/* eslint-disable css-modules/no-undef-class */
 import { useState } from 'react'
 
 import studyImgae from './../../../../common/assets/icons/study.png'
 
-import styles from './registerPage.module.scss'
+import styles from './createPage.module.scss'
 
 const fields = [
-  { name: 'Nume user', type: 'text' },
-  { name: 'Vârstă', type: 'number' },
-  { name: 'Universitatea', type: 'text' },
-  { name: 'Facultatea', type: 'text' },
-  { name: 'Specializare', type: 'text' },
-  { name: 'Mail', type: 'email' },
-  { name: 'Parola', type: 'password' },
+  { name: 'Materie predata', type: 'text', required: true },
+  { name: 'Facultate', type: 'text', required: true },
+  { name: 'Specializare', type: 'text', required: true },
+  { name: 'Maxim numar studenti', type: 'text', required: true },
 ]
 
-const RegisterPage = () => {
+const CreatePage = () => {
   const [formState, setFormState] = useState({
-    'Nume user': '',
-    Vârstă: '',
-    Universitatea: '',
-    Facultatea: '',
+    'Materie predata': '',
+    Facultate: '',
     Specializare: '',
-    Mail: '',
-    Parola: '',
+    'Maxim numar studenti': '',
   })
   const [errors, setErrors] = useState({})
 
   const validateField = (field, value) => {
     switch (field) {
-      case 'Mail':
-        return /\S+@\S+\.\S+/.test(value) ? null : 'Introduceți un email valid'
-      case 'Parola':
-        return value.length < 8 ? 'Parola trebuie să conțină cel puțin 8 caractere' : null
-      case 'Vârstă':
-        return isNaN(value) ? 'Vârsta trebuie să fie un număr' : null
+      case 'Maxim numar studenti':
+        return isNaN(value) ? 'Numarul maxim de studenti trebuie sa fie un numar' : null
       default:
         return null
     }
@@ -57,14 +49,15 @@ const RegisterPage = () => {
   }
 
   const handleRegister = () => {
-    window.location.href = '/quiz'
+    window.location.href = '/home'
   }
 
   return (
     <div className={styles.parent}>
-      <img src={studyImgae} alt='login' className={styles.image} />
+      <img src={studyImgae} alt='your-s' className={styles.image} />
+      <h1 className={styles.text_create}>Create</h1>
       <form onSubmit={handleSubmit} className={styles.form_container}>
-        {fields.map(({ name, type }) => (
+        {fields.map(({ name, type, required }) => (
           <div key={name} className={styles.form_container_input}>
             <input
               type={type}
@@ -73,19 +66,17 @@ const RegisterPage = () => {
               name={name}
               value={formState[name]}
               onChange={handleInputChange}
+              required={required}
             />
             {errors[name] && <p className={styles.error}>{errors[name]}</p>}
           </div>
         ))}
-        <a href='#' className={styles.text}>
-          Ai uitat parola?
-        </a>
         <button type='submit' onClick={handleRegister} className={styles.button}>
-          Înregistrare
+          Creaza
         </button>
       </form>
     </div>
   )
 }
 
-export default RegisterPage
+export default CreatePage
