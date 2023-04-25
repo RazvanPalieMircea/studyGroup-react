@@ -1,14 +1,14 @@
 /* eslint-disable css-modules/no-unused-class */
-import CalendarPage from 'features/Home/components/CalendarPage/CalendarPage'
+import AddCalendarPage from 'features/Home/components/AddCalendarPage/AddCalendarPage'
 import { Nav } from 'features/NavBar'
 
 import styles from './home.module.scss'
 
-const Calendar = () => (
+const AddCalendar = () => (
   <div className={styles.parent_with_nav}>
     <Nav />
-    <CalendarPage />
+    <AddCalendarPage />
   </div>
 )
 
-export default Calendar
+export default AddCalendar
