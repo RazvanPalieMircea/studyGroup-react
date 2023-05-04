@@ -8,6 +8,7 @@ const ListMentorsGroupsPage = () => {
   const handleJoin = () => {
     window.location.href = '/quiz'
   }
+  const id = 1
   return (
     <div className={styles.parent}>
       <img src={studyImgae} alt='your-s' className={styles.image} />
@@ -18,7 +19,7 @@ const ListMentorsGroupsPage = () => {
             alt='your-s'
             className={styles.image}
           />
-          <Link to='/profil' className={styles.text}>
+          <Link to={`/profil/${id}`} className={styles.text}>
             {el}
           </Link>
           <div onClick={handleJoin} className={styles.join}>

@@ -6,10 +6,30 @@ import studyImgae from './../../../../common/assets/icons/study.png'
 import styles from './listPage.module.scss'
 
 const listButton = [
-  { text: 'Găseste un mentor', name: 'findmentor', link: '', style: 'rgb(10, 175, 197)' },
-  { text: 'Alătură-te unui grup', name: 'findgroup', link: '', style: 'rgb(118, 102, 8)' },
-  { text: 'Crează grup', name: 'creategroup', link: '', style: 'rgb(9, 105, 18)' },
-  { text: 'Devino un mentor', name: 'creatementor', link: '', style: 'rgb(118, 8, 34)' },
+  {
+    text: 'Găseste un mentor',
+    name: 'findmentor',
+    link: '/list-mentor-group',
+    style: 'rgb(10, 175, 197)',
+  },
+  {
+    text: 'Alătură-te unui grup',
+    name: 'findgroup',
+    link: '/list-mentor-group',
+    style: 'rgb(118, 102, 8)',
+  },
+  {
+    text: 'Crează grup',
+    name: 'creategroup',
+    link: '/create-page',
+    style: 'rgb(9, 105, 18)',
+  },
+  {
+    text: 'Devino un mentor',
+    name: 'creatementor',
+    link: '/create-page',
+    style: 'rgb(118, 8, 34)',
+  },
 ]
 const ListPage = () => {
   return (

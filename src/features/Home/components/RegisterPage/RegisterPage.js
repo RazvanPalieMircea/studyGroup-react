@@ -45,12 +45,34 @@ const RegisterPage = () => {
     setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }))
   }
 
-  const handleSubmit = (e) => {
+  const sendDataToBackend = async (formData) => {
+    const response = await fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+
+    if (!response.ok) {
+      throw new Error(`Failed to register: ${response.status}`)
+    }
+
+    const responseData = await response.json()
+    console.log(responseData)
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const formValid = Object.values(errors).every((val) => val === null)
     if (formValid) {
-      // send form data to backend
-      console.log(formState)
+      try {
+        await sendDataToBackend(formState)
+        console.log('Registration successful')
+      } catch (error) {
+        console.error(error)
+        console.log('Registration failed')
+      }
     } else {
       console.log('Form contains errors')
     }

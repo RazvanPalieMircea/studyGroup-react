@@ -29,6 +29,8 @@ const LoginPage = () => {
         console.error(error)
         window.location.href = '/home'
       })
+
+    localStorage.setItem('Id', 1)
   }
 
   return (

@@ -13,15 +13,43 @@ const AddCalendarPage = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [eventData, setEventData] = useState([])
+  const [modalMessage, setModalMessage] = useState('')
+  const [showModal, setShowModal] = useState(false)
+
+  const postEvent = (eventData) => {
+    return new Promise((resolve, reject) => {
+      fetch('http://localhost:3000/calendar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(eventData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok')
+          }
+          resolve('Event successfully added!')
+        })
+        .catch((error) => {
+          reject('There was a problem adding the event:', error)
+        })
+    })
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prevData) => ({ ...prevData, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const { start, end, title } = formData
+    if (!start || !end || !title) {
+      setModalMessage('Please complete all fields')
+      setShowModal(true)
+      return
+    }
     const newEvent = {
       start: new Date(start),
       end: new Date(end),
@@ -33,6 +61,14 @@ const AddCalendarPage = () => {
       end: '',
       title: '',
     })
+
+    try {
+      const response = await postEvent(newEvent)
+      setModalMessage(response)
+      setShowModal(true)
+    } catch (error) {
+      setModalMessage(error)
+    }
   }
 
   return (
@@ -75,7 +111,14 @@ const AddCalendarPage = () => {
           Add Event
         </button>
       </form>
-      <div className={styles.eventData}>{JSON.stringify(eventData)}</div>
+      {showModal && (
+        <div className={styles.modal}>
+          <div className={styles.modal_content}>
+            <p>{modalMessage}</p>
+            <button onClick={() => setShowModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

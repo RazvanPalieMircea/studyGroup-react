@@ -1,0 +1,57 @@
+{
+    "calendar": [
+        {
+            "id": 1,
+            "start": "2023-05-25T10:30:00Z",
+            "end": "2023-05-25T11:30:00Z",
+            "title": "Meeting with John",
+            "user": 123
+        },
+        {
+            "id": 2,
+            "start": "2023-05-25T10:30:00Z",
+            "end": "2023-05-25T11:30:00Z",
+            "title": "Meeting with John",
+            "user": 123
+        }
+    ],
+
+    "profil": [
+        {
+            "id": 1,
+            "name": "Mihai marian",
+            "materie": "Mihai marian",
+            "facultate": "FSEGA",
+            "curs": "Hybrid"
+        },
+        {
+            "id": 2,
+            "name": "Mihai marian",
+            "materie": "Mihai marian",
+            "facultate": "FSEGA",
+            "curs": "Hybrid"
+        },
+        {
+            "id": 3,
+            "isGroup": true,
+            "name": "Group 3",
+            "materie": "Mate",
+            "facultate": "FSEGA",
+            "curs": "Hybrid"
+        }
+    ],
+    "mentors": [
+        {
+            "id": 1,
+            "name": "Mihai marian1"
+        },
+        {
+            "id": 2,
+            "name": "Mihai marian2"
+        },
+        {
+            "id": 3,
+            "name": "Group 1"
+        }
+    ]
+}

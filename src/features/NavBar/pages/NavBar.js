@@ -10,7 +10,8 @@ const Navbar = () => {
   const toggleMenu = () => {
     setShowMenu(!showMenu)
   }
-
+  const id = localStorage.getItem('Id')
+  console.log(id)
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarLeft}>
@@ -27,7 +28,7 @@ const Navbar = () => {
         <Link to='/home' className={styles.showDesktop}>
           Acasă
         </Link>
-        <Link to='/profil' className={styles.showDesktop}>
+        <Link to={`/profil/${id}`} className={styles.showDesktop}>
           Profil
         </Link>
         <Link to='/list-create' className={styles.showDesktop}>
@@ -36,13 +37,16 @@ const Navbar = () => {
         <Link to='/students' className={styles.showDesktop}>
           Studentii mei
         </Link>
+        <Link to='/calendar' className={styles.showDesktop}>
+          Evenimente
+        </Link>
       </div>
       {showMenu ? (
         <div onClick={toggleMenu} className={(styles.navbarMenu, styles.show)}>
           <Link to='/home' className={styles.navbarLink}>
             Acasă
           </Link>
-          <Link to='/profil' className={styles.navbarLink}>
+          <Link to={`/profil/${id}`} className={styles.navbarLink}>
             Profil
           </Link>
           <Link to='/list-create' className={styles.navbarLink}>
@@ -50,6 +54,9 @@ const Navbar = () => {
           </Link>
           <Link to='/students' className={styles.navbarLink}>
             Studentii mei
+          </Link>
+          <Link to='/calendar' className={styles.navbarLink}>
+            Evenimente
           </Link>
         </div>
       ) : (
