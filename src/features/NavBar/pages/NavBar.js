@@ -1,3 +1,4 @@
+/* eslint-disable css-modules/no-undef-class */
 /* eslint-disable css-modules/no-unused-class */
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -16,6 +17,16 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.navbarLeft}>
         <Link to='/' className={styles.navbarBrand}>
+          <img
+            src='https://cdn-icons-png.flaticon.com/512/566/566985.png'
+            alt='Learning icon'
+            style={{
+              filter: 'brightness(0) saturate(100%) invert(100%)',
+              width: '20px',
+              height: '20px',
+              padding: '2px',
+            }}
+          />
           STUDY GROUP
         </Link>
       </div>

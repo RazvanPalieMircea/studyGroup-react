@@ -2,6 +2,8 @@
 /* eslint-disable css-modules/no-undef-class */
 import { useState } from 'react'
 
+import axios from 'axios'
+
 import studyImgae from './../../../../common/assets/icons/study.png'
 
 import styles from './createPage.module.scss'
@@ -37,26 +39,30 @@ const CreatePage = () => {
     setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }))
   }
 
-  const handleSubmit = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault()
     const formValid = Object.values(errors).every((val) => val === null)
     if (formValid) {
-      // send form data to backend
-      console.log(formState)
+      try {
+        const response = await axios.post('http://localhost:3000/profil', formState)
+        console.log(response.data)
+        window.location.href = '/home'
+        // Call to create item was successful
+      } catch (error) {
+        console.error(error)
+        // Handle error
+      }
     } else {
       console.log('Form contains errors')
+      // Handle invalid form
     }
-  }
-
-  const handleRegister = () => {
-    window.location.href = '/home'
   }
 
   return (
     <div className={styles.parent}>
       <img src={studyImgae} alt='your-s' className={styles.image} />
       <h1 className={styles.text_create}>Create</h1>
-      <form onSubmit={handleSubmit} className={styles.form_container}>
+      <form className={styles.form_container}>
         {fields.map(({ name, type, required }) => (
           <div key={name} className={styles.form_container_input}>
             <input
