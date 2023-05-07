@@ -18,15 +18,15 @@ const HomePage = () => {
   return (
     <div className={styles.parent}>
       <img src={studyImage} alt='your-s' className={styles.image} />
-      {data.map((el) => (
-        <Link key={el.id} to={`/profil/${el.id}`} className={styles.container_group}>
+      {data.map((mentor) => (
+        <Link key={mentor._id} to={`/profil/${mentor._id}`} className={styles.container_group}>
           <img
             src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'
             alt='your-s'
             className={styles.image}
           />
-          <Link to={`/profil/${el.id}`} className={styles.text}>
-            {el.name}
+          <Link to={`/profil/${mentor._id}`} className={styles.text}>
+            {mentor.facultate}
           </Link>
         </Link>
       ))}

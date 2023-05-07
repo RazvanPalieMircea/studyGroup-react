@@ -9,25 +9,25 @@ const listButton = [
   {
     text: 'Găseste un mentor',
     name: 'findmentor',
-    link: '/list-mentor-group',
+    link: '/list/mentor',
     style: 'rgb(10, 175, 197)',
   },
   {
     text: 'Alătură-te unui grup',
     name: 'findgroup',
-    link: '/list-mentor-group',
+    link: '/list/group',
     style: 'rgb(118, 102, 8)',
   },
   {
     text: 'Crează grup',
     name: 'creategroup',
-    link: '/create-page',
+    link: '/create/group',
     style: 'rgb(9, 105, 18)',
   },
   {
     text: 'Devino un mentor',
     name: 'creatementor',
-    link: '/create-page',
+    link: '/create/mentor',
     style: 'rgb(118, 8, 34)',
   },
 ]

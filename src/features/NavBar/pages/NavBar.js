@@ -12,7 +12,7 @@ const Navbar = () => {
     setShowMenu(!showMenu)
   }
   const id = localStorage.getItem('Id')
-  console.log(id)
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbarLeft}>

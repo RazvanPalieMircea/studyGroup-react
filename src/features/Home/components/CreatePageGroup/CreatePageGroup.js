@@ -1,5 +1,4 @@
 /* eslint-disable css-modules/no-unused-class */
-/* eslint-disable css-modules/no-undef-class */
 import { useState } from 'react'
 
 import axios from 'axios'
@@ -9,24 +8,24 @@ import studyImgae from './../../../../common/assets/icons/study.png'
 import styles from './createPage.module.scss'
 
 const fields = [
-  { name: 'Materie predata', type: 'text', required: true },
-  { name: 'Facultate', type: 'text', required: true },
-  { name: 'Specializare', type: 'text', required: true },
-  { name: 'Maxim numar studenti', type: 'text', required: true },
+  { name: 'materie', label: 'Materie predata', type: 'text', required: true },
+  { name: 'facultate', label: 'Facultate', type: 'text', required: true },
+  { name: 'specializare', label: 'Specializare', type: 'text', required: true },
+  { name: 'maxNumberMembers', label: 'Maxim numar studenti', type: 'text', required: true },
 ]
 
-const CreatePage = () => {
+const CreatePageGroup = () => {
   const [formState, setFormState] = useState({
-    'Materie predata': '',
+    materie: '',
     Facultate: '',
-    Specializare: '',
-    'Maxim numar studenti': '',
+    specializare: '',
+    maxNumberMembers: '',
   })
   const [errors, setErrors] = useState({})
 
   const validateField = (field, value) => {
     switch (field) {
-      case 'Maxim numar studenti':
+      case 'maxNumberMembers':
         return isNaN(value) ? 'Numarul maxim de studenti trebuie sa fie un numar' : null
       default:
         return null
@@ -44,7 +43,10 @@ const CreatePage = () => {
     const formValid = Object.values(errors).every((val) => val === null)
     if (formValid) {
       try {
-        const response = await axios.post('http://localhost:3000/profil', formState)
+        const response = await axios.post('http://localhost:3001/groups/add', {
+          ...formState,
+          users: [], // Set users field as an empty array
+        })
         console.log(response.data)
         window.location.href = '/home'
         // Call to create item was successful
@@ -63,11 +65,11 @@ const CreatePage = () => {
       <img src={studyImgae} alt='your-s' className={styles.image} />
       <h1 className={styles.text_create}>Creaza</h1>
       <form className={styles.form_container}>
-        {fields.map(({ name, type, required }) => (
+        {fields.map(({ name, label, type, required }) => (
           <div key={name} className={styles.form_container_input}>
             <input
               type={type}
-              placeholder={name}
+              placeholder={label}
               className={styles.input}
               name={name}
               value={formState[name]}
@@ -85,4 +87,4 @@ const CreatePage = () => {
   )
 }
 
-export default CreatePage
+export default CreatePageGroup

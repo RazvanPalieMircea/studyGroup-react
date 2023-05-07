@@ -11,7 +11,8 @@ import {
   Profil,
   List,
   ListMentorsGroups,
-  Create,
+  CreateMentor,
+  CreateGroup,
   Calendar,
   AddCalendar,
 } from 'features/Home'
@@ -25,8 +26,10 @@ enum UNCONFIRMED_ROUTES {
   HOME = 'HOME',
   PROFIL = 'PROFIL',
   LIST = 'LIST',
-  LIST_GROUP_MENTOR = 'LIST_GROUP_MENTOR',
-  CREATE = 'CREATE',
+  CREATE_GROUP = 'CREATE_GROUP',
+  CREATE_MENTOR = 'CREATE_MENTOR',
+  LIST_GROUP = 'LIST_GROUP',
+  LIST_MENTOR = 'LIST_MENTOR',
   CALENDAR = 'CALENDAR',
   ADD_CALENDAR = 'ADD_CALENDAR',
 }
@@ -40,8 +43,10 @@ const UNCONFIRMED_PATHS: Record<UNCONFIRMED_ROUTES, string> = {
   [UNCONFIRMED_ROUTES.HOME]: '/home',
   [UNCONFIRMED_ROUTES.PROFIL]: '/profil/:id',
   [UNCONFIRMED_ROUTES.LIST]: '/list-create',
-  [UNCONFIRMED_ROUTES.LIST_GROUP_MENTOR]: '/list-mentor-group',
-  [UNCONFIRMED_ROUTES.CREATE]: '/create-page',
+  [UNCONFIRMED_ROUTES.LIST_GROUP]: '/list/group',
+  [UNCONFIRMED_ROUTES.LIST_MENTOR]: '/list/mentor',
+  [UNCONFIRMED_ROUTES.CREATE_GROUP]: '/create/group',
+  [UNCONFIRMED_ROUTES.CREATE_MENTOR]: '/create/mentor',
   [UNCONFIRMED_ROUTES.CALENDAR]: '/calendar',
   [UNCONFIRMED_ROUTES.ADD_CALENDAR]: '/add-calendar',
 }
@@ -80,12 +85,20 @@ export const UNCONFIRMED_ROUTE_CONFIG: RouteProps[] = [
     element: <List />,
   },
   {
-    path: UNCONFIRMED_PATHS.LIST_GROUP_MENTOR,
+    path: UNCONFIRMED_PATHS.LIST_GROUP,
     element: <ListMentorsGroups />,
   },
   {
-    path: UNCONFIRMED_PATHS.CREATE,
-    element: <Create />,
+    path: UNCONFIRMED_PATHS.LIST_MENTOR,
+    element: <ListMentorsGroups />,
+  },
+  {
+    path: UNCONFIRMED_PATHS.CREATE_GROUP,
+    element: <CreateGroup />,
+  },
+  {
+    path: UNCONFIRMED_PATHS.CREATE_MENTOR,
+    element: <CreateMentor />,
   },
   {
     path: UNCONFIRMED_PATHS.CALENDAR,
