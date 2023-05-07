@@ -15,7 +15,7 @@ const CalendarPage = () => {
   const [eventData, setEventData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3000/calendar')
+    fetch('http://localhost:3001/events/get_all')
       .then((response) => response.json())
       .then((data) => setEventData(data))
       .catch((error) => console.error('Error fetching events:', error))

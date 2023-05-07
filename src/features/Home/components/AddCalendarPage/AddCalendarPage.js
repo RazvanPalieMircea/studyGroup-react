@@ -18,7 +18,7 @@ const AddCalendarPage = () => {
 
   const postEvent = (eventData) => {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:3000/calendar', {
+      fetch('http://localhost:3001/events/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
