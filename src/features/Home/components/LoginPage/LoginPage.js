@@ -5,32 +5,28 @@ import studyImgae from './../../../../common/assets/icons/study.png'
 import styles from './loginPage.module.scss'
 
 const LoginPage = () => {
-  const [username, setUsername] = useState(null)
+  const [email, setemail] = useState(null)
   const [password, setPassword] = useState(null)
+  const [eror, setErorr] = useState(false)
 
   const handleLogin = () => {
-    // Send login request with username and password
-    fetch('/api/login', {
+    // Send login request with email and password
+    fetch('http://localhost:3001/users/login', {
       method: 'POST',
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
       headers: {
         'Content-Type': 'application/json',
       },
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
-        if (data.success) {
-          window.location.href = '/home'
-        }
-      })
-      .catch((error) => {
-        // Handle error
-        console.error(error)
+        document.cookie = `token=${data.token};`
+        localStorage.setItem('Id', data.user._id)
         window.location.href = '/home'
       })
-
-    localStorage.setItem('Id', 1)
+      .catch(() => {
+        setErorr(true)
+      })
   }
 
   return (
@@ -39,10 +35,10 @@ const LoginPage = () => {
       <div className={styles.form_container}>
         <input
           type='text'
-          placeholder='Nume user'
+          placeholder='Email'
           className={styles.input}
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={email}
+          onChange={(e) => setemail(e.target.value)}
         />
         <input
           type='password'
@@ -55,9 +51,8 @@ const LoginPage = () => {
           Ai uitat parola?
         </a>
       </div>
-      <button
-        className={username && password ? styles.button : styles.disable}
-        onClick={handleLogin}>
+      {eror ? <p className={styles.error}>Email sau parola gresita!</p> : ''}
+      <button className={email && password ? styles.button : styles.disable} onClick={handleLogin}>
         Login
       </button>
     </div>

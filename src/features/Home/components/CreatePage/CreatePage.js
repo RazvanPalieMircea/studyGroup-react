@@ -61,7 +61,7 @@ const CreatePage = () => {
   return (
     <div className={styles.parent}>
       <img src={studyImgae} alt='your-s' className={styles.image} />
-      <h1 className={styles.text_create}>Create</h1>
+      <h1 className={styles.text_create}>Creaza</h1>
       <form className={styles.form_container}>
         {fields.map(({ name, type, required }) => (
           <div key={name} className={styles.form_container_input}>

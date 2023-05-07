@@ -5,7 +5,8 @@
             "start": "2023-05-25T10:30:00Z",
             "end": "2023-05-25T11:30:00Z",
             "title": "Meeting with John",
-            "user": 123
+            "user": 123,
+            "participants": [1,2]
         },
         {
             "id": 2,

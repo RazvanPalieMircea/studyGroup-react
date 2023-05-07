@@ -1,3 +1,4 @@
+/* eslint-disable css-modules/no-unused-class */
 import { useState } from 'react'
 
 import studyImgae from './../../../../common/assets/icons/study.png'
@@ -5,37 +6,53 @@ import studyImgae from './../../../../common/assets/icons/study.png'
 import styles from './registerPage.module.scss'
 
 const fields = [
-  { name: 'Nume user', type: 'text' },
-  { name: 'Vârstă', type: 'number' },
-  { name: 'Universitatea', type: 'text' },
-  { name: 'Facultatea', type: 'text' },
-  { name: 'Specializare', type: 'text' },
-  { name: 'Mail', type: 'email' },
-  { name: 'Parola', type: 'password' },
+  { label: 'Nume user', name: 'name', type: 'text' },
+  { label: 'Vârstă', name: 'varsta', type: 'number' },
+  { label: 'Universitatea', name: 'universitate', type: 'text' },
+  { label: 'Facultatea', name: 'facultate', type: 'text' },
+  { label: 'Specializare', name: 'specializare', type: 'text' },
+  { label: 'Mail', name: 'email', type: 'email' },
+  { label: 'Parola', name: 'password', type: 'password' },
 ]
 
 const RegisterPage = () => {
   const [formState, setFormState] = useState({
-    'Nume user': '',
-    Vârstă: '',
-    Universitatea: '',
-    Facultatea: '',
-    Specializare: '',
-    Mail: '',
-    Parola: '',
+    name: '',
+    password: '',
+    varsta: null,
+    universitate: '',
+    facultate: '',
+    specializare: '',
+    email: '',
+    role: 'Admin',
+    quizResult: [
+      {
+        key: 'ceva',
+        value: 'altceva',
+      },
+      {
+        key: 'ceva',
+        value: 'altceva',
+      },
+    ],
+    quizDone: true,
+    mentors: [],
+    mentys: [],
+    groups: [],
+    createdGroup: [],
   })
   const [errors, setErrors] = useState({})
 
   const validateField = (field, value) => {
     switch (field) {
-      case 'Mail':
+      case 'email':
         return /\S+@\S+\.\S+/.test(value) ? null : 'Introduceți un email valid'
-      case 'Parola':
+      case 'password':
         return value.length < 8 ? 'Parola trebuie să conțină cel puțin 8 caractere' : null
-      case 'Vârstă':
+      case 'varsta':
         return isNaN(value) ? 'Vârsta trebuie să fie un număr' : null
       default:
-        return null
+        return value.trim() !== '' ? null : 'Completați acest câmp'
     }
   }
 
@@ -46,7 +63,7 @@ const RegisterPage = () => {
   }
 
   const sendDataToBackend = async (formData) => {
-    const response = await fetch('/api/register', {
+    const response = await fetch('http://localhost:3001/users/singup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -69,28 +86,25 @@ const RegisterPage = () => {
       try {
         await sendDataToBackend(formState)
         console.log('Registration successful')
+        window.location.href = '/login'
       } catch (error) {
         console.error(error)
-        console.log('Registration failed')
+        setErrors({ name: 'Eroare register' })
       }
     } else {
       console.log('Form contains errors')
     }
   }
 
-  const handleRegister = () => {
-    window.location.href = '/quiz'
-  }
-
   return (
     <div className={styles.parent}>
       <img src={studyImgae} alt='login' className={styles.image} />
       <form onSubmit={handleSubmit} className={styles.form_container}>
-        {fields.map(({ name, type }) => (
+        {fields.map(({ label, name, type }) => (
           <div key={name} className={styles.form_container_input}>
             <input
               type={type}
-              placeholder={name}
+              placeholder={label}
               className={styles.input}
               name={name}
               value={formState[name]}
@@ -99,10 +113,7 @@ const RegisterPage = () => {
             {errors[name] && <p className={styles.error}>{errors[name]}</p>}
           </div>
         ))}
-        <a href='#' className={styles.text}>
-          Ai uitat parola?
-        </a>
-        <button type='submit' onClick={handleRegister} className={styles.button}>
+        <button type='submit' onClick={handleSubmit} className={styles.button}>
           Înregistrare
         </button>
       </form>

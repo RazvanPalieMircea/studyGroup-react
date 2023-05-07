@@ -9,7 +9,7 @@ const HomePage = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3000/mentors')
+    fetch('http://localhost:3001/mentors/get_all')
       .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.error(error))

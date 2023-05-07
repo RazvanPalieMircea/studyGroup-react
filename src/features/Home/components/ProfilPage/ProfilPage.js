@@ -8,7 +8,7 @@ const ProfilPage = () => {
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    fetch(`http://localhost:3000/profil/${id}`)
+    fetch(`http://localhost:3001/users/get_by_id/${id}`)
       .then((response) => response.json())
       .then((data) => setData(data))
   }, [id])
@@ -31,11 +31,12 @@ const ProfilPage = () => {
       <div
         style={data.isGroup ? { backgroundColor: '#226951' } : {}}
         className={styles.container_group}>
+        <p className={styles.text}>Mail: {data.email}</p>
         <p className={styles.text}>Nume: {data.name}</p>
-        <p className={styles.text}>Materie: {data.materie}</p>
+        <p className={styles.text}>Universitate: {data.universitate}</p>
         <p className={styles.text}>Facultate: {data.facultate}</p>
-        <p className={styles.text}>Tip curs: {data.curs}</p>
-        <p className={styles.text}>ID: {id}</p> {/* display the id */}
+        <p className={styles.text}>Specializare: {data.specializare}</p>
+        <p className={styles.text}>Varsta: {data.varsta}</p>
       </div>
       <Link to='/home' className={styles.text_home}>
         Acasa
